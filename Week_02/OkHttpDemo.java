@@ -36,7 +36,7 @@ public class OkHttpDemo {
     public static void asyncGet() {
         OkHttpClient okHttpClient = new OkHttpClient(); // 创建OkHttpClient对象
         Request request = new Request.Builder().url(URL).build(); // 创建一个请求
-        okHttpClient.newCall(request).enqueue(new Callback() { // 回调
+        okHttpClient.newCall(request).enqueue(() -> { // 回调
             public void onResponse(Call call, Response response) throws IOException {
                 // 请求成功调用，该回调在子线程
                 System.out.println(response.body().string());
