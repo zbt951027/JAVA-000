@@ -1,5 +1,4 @@
-# 作业
-***
+
 ## 作业一
 &ensp;&ensp;&ensp;&ensp;作业要求：使用GCLogAnalysis.java 自己演练一遍串行/并行/CMS/G1的案例。 
 
