@@ -70,7 +70,14 @@ public class GCLogAnalysis {
 }
 ```
 
-&ensp;&ensp;&ensp;&ensp;我的电脑win10、8核、16G内存, 分别设置不同的堆内存大小,分别对串行、并行、CMS、G1 GC 进行测试,结果如下图所示(为了防止数据抖动,设置的持续运行时间为5秒):
+&ensp;&ensp;&ensp;&ensp;我的电脑win10、8核、16G内存, 设置不同的堆内存大小,分别对串行、并行、CMS、G1 GC 进行测试,JVM 参数如下：
+```sh
+-XX:+UseSerialGC -Xmx512m -Xms512m -XX:+PrintGC -XX:+PrintGCDateStamps
+-XX:+UseParallelGC -Xmx512m -Xms512m -XX:+PrintGC -XX:+PrintGCDateStamps
+-XX:+UseConcMarkSweepGC -Xmx512m -Xms512m -XX:+PrintGC -XX:+PrintGCDateStamps
+-XX:+UseG1GC -Xmx512m -Xms512m -XX:+PrintGC -XX:+PrintGCDateStamps
+```
+&ensp;&ensp;&ensp;&ensp;结果如下图所示(为了防止数据抖动,设置的持续运行时间为5秒):
 
 | GC/MEM             | 128M | 512M    | 1G      | 2G      | 4G      | 8G      |
 | ------------------ | ---- | ------- | ------- | ------- | ------- | ------- |
