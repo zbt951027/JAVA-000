@@ -5,8 +5,6 @@
 &ensp;&ensp;&ensp;&ensp;用于测试的代码如下：
 
 ```java
-package gc;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
@@ -15,6 +13,16 @@ public class GCLogAnalysis {
     private static Random random = new Random();
 
     public static void main(String[] args) {
+        long sum = 0L;
+        for (int i = 0; i < 1; i++) {
+            long count = generateGarbageCount();
+            sum += count;
+        }
+
+        System.out.println("执行结束!共生成对象次数:" + (sum / 1.0));
+    }
+
+    private static long generateGarbageCount() {
         // 当前毫秒时间戳
         long startMillis = System.currentTimeMillis();
         // 持续运行毫秒数; 可根据需要进行修改
@@ -36,7 +44,8 @@ public class GCLogAnalysis {
                 cachedGarbage[randomIndex] = garbage;
             }
         }
-        System.out.println("执行结束!共生成对象次数:" + counter.longValue());
+
+        return counter.longValue();
     }
 
     // 生成对象
